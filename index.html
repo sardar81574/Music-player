@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>VibeWave — Your Music Universe</title>
+  <meta name="theme-color" content="#080712">
+  <meta name="description" content="Discover music, create playlists and enjoy your personal music player.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <a href="#" class="logo" data-view="home">♫ VibeWave</a>
+
+    <p class="sidebar-label">MENU</p>
+
+    <button class="nav-btn active" data-view="home">
+      <span>⌂</span> Home
+    </button>
+
+    <button class="nav-btn" data-view="search">
+      <span>⌕</span> Search
+    </button>
+
+    <button class="nav-btn" data-view="library">
+      <span>▤</span> Your Library
+    </button>
+
+    <button class="nav-btn" data-view="liked">
+      <span>♥</span> Liked Songs
+    </button>
+
+    <button class="nav-btn" data-view="playlists">
+      <span>♫</span> Playlists
+    </button>
+
+    <div class="sidebar-note">
+      <span class="note-icon">🎧</span>
+      <h3>Your music.</h3>
+      <p>Your mood. Your universe.</p>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- TOP HEADER -->
+    <header class="topbar">
+      <div class="welcome">
+        <p class="eyebrow">YOUR PERSONAL MUSIC SPACE</p>
+        <h2>Welcome to <span>VibeWave</span></h2>
+      </div>
+
+      <div class="header-actions">
+        <label class="search-box">
+          <span>⌕</span>
+          <input
+            type="search"
+            id="search"
+            placeholder="Search songs or artists..."
+            autocomplete="off"
+          >
+        </label>
+
+        <label class="upload-btn">
+          <span>＋</span> Add Songs
+          <input
+            type="file"
+            id="fileInput"
+            accept="audio/*,.mp3,.wav,.ogg,.m4a,.aac,.flac"
+            multiple
+            hidden
+          >
+        </label>
+      </div>
+    </header>
+
+    <!-- HOME VIEW -->
+    <div id="homeSection">
+
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="live-dot"></span>
+            MUSIC FOR EVERY MOOD
+          </div>
+
+          <h1>Feel every beat.<br><span>Live your vibe.</span></h1>
+
+          <p>
+            Discover your sound, explore new vibes
+            and create a playlist that feels like you.
+          </p>
+
+          <div class="hero-actions">
+            <button class="primary" id="playAll">
+              ▶ Play All
+            </button>
+
+            <button class="secondary" data-view="library">
+              Explore Library ↗
+            </button>
+          </div>
+
+          <div class="hero-stats">
+            <div>
+              <strong id="songCount">12</strong>
+              <span>Demo tracks</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div>
+              <strong>∞</strong>
+              <span>Your vibes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-orb orb-one"></div>
+        <div class="hero-orb orb-two"></div>
+
+        <div class="hero-disc">
+          <div class="disc-inner">
+            <span>♫</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- MOOD PILLS -->
+      <section class="mood-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">PICK YOUR FEELING</p>
+            <h2>Explore your mood</h2>
+          </div>
+        </div>
+
+        <div class="mood-list">
+          <button class="mood-btn active" data-mood="all">✨ All Music</button>
+          <button class="mood-btn" data-mood="chill">🌙 Chill</button>
+          <button class="mood-btn" data-mood="pop">🎤 Pop</button>
+          <button class="mood-btn" data-mood="energy">⚡ Energy</button>
+          <button class="mood-btn" data-mood="romantic">💗 Romantic</button>
+        </div>
+      </section>
+
+      <!-- SONG CARDS -->
+      <section class="music-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">MADE FOR YOUR EARS</p>
+            <h2>Popular Tracks <span class="heading-sparkle">✦</span></h2>
+          </div>
+
+          <button class="text-btn" id="showAllSongs">
+            View all ↗
+          </button>
+        </div>
+
+        <div id="songCards" class="song-grid"></div>
+      </section>
+
+      <!-- FEATURE BANNER -->
+      <section class="feature-banner">
+        <div class="feature-icon">♫</div>
+        <div>
+          <p class="eyebrow">MAKE IT YOURS</p>
+          <h2>Your music. Your rules.</h2>
+          <p>Upload your favorite audio files and build your own music library.</p>
+        </div>
+        <label class="feature-upload">
+          + Upload Music
+          <input type="file" accept="audio/*" multiple id="featureFileInput" hidden>
+        </label>
+      </section>
+
+    </div>
+
+    <!-- SEARCH VIEW -->
+    <section id="searchSection" hidden>
+      <div class="page-heading">
+        <p class="eyebrow">FIND YOUR NEXT FAVORITE</p>
+        <h1>Search Music <span>⌕</span></h1>
+        <p>Search by song title or artist name.</p>
+      </div>
+
+      <div id="searchResults" class="song-grid"></div>
+      <p id="searchEmpty" class="empty-message" hidden>No songs found. Try another search.</p>
+    </section>
+
+    <!-- LIBRARY VIEW -->
+    <section id="librarySection" hidden>
+      <div class="page-heading">
+        <p class="eyebrow">ALL YOUR FAVORITES IN ONE PLACE</p>
+        <h1>Your Library <span>▤</span></h1>
+        <p>Your demo tracks and uploaded audio files.</p>
+      </div>
+
+      <div id="libraryList" class="track-list"></div>
+      <p id="libraryEmpty" class="empty-message" hidden>Your library is empty.</p>
+    </section>
+
+    <!-- LIKED VIEW -->
+    <section id="likedSection" hidden>
+      <div class="page-heading liked-heading">
+        <div class="liked-big-icon">♥</div>
+        <div>
+          <p class="eyebrow">YOUR PERSONAL COLLECTION</p>
+          <h1>Liked Songs</h1>
+          <p>Every song that makes you feel something.</p>
+        </div>
+      </div>
+
+      <div id="likedList" class="track-list"></div>
+      <p id="likedEmpty" class="empty-message" hidden>You haven't liked any songs yet. Tap ♡ on a song to save it here.</p>
+    </section>
+
+    <!-- PLAYLIST VIEW -->
+    <section id="playlistsSection" hidden>
+      <div class="page-heading">
+        <p class="eyebrow">YOUR OWN SOUNDTRACK</p>
+        <h1>Your Playlists <span>♫</span></h1>
+        <p>Create collections for every mood and moment.</p>
+      </div>
+
+      <form id="playlistForm" class="create-playlist">
+        <input
+          id="playlistName"
+          type="text"
+          placeholder="Give your playlist a name..."
+          maxlength="45"
+          required
+        >
+        <button class="primary" type="submit">＋ Create Playlist</button>
+      </form>
+
+      <div id="playlistList" class="playlist-grid"></div>
+      <p id="playlistEmpty" class="empty-message">You haven't created any playlists yet.</p>
+    </section>
+
+  </main>
+</div>
+
+<!-- MOBILE BOTTOM NAVIGATION -->
+<nav class="bottom-nav" aria-label="Mobile navigation">
+  <button class="bottom-nav-btn active" data-view="home">
+    <span>⌂</span><small>Home</small>
+  </button>
+
+  <button class="bottom-nav-btn" data-view="search">
+    <span>⌕</span><small>Search</small>
+  </button>
+
+  <button class="bottom-nav-btn" data-view="library">
+    <span>▤</span><small>Library</small>
+  </button>
+
+  <button class="bottom-nav-btn" data-view="liked">
+    <span>♥</span><small>Liked</small>
+  </button>
+
+  <button class="bottom-nav-btn" data-view="playlists">
+    <span>♫</span><small>Playlists</small>
+  </button>
+</nav>
+
+<!-- FIXED MUSIC PLAYER -->
+<footer class="player">
+
+  <div class="now-playing">
+    <div class="album-art" id="currentArt">
+      <span>♫</span>
+    </div>
+
+    <div class="current-info">
+      <strong id="currentTitle">Choose a song</strong>
+      <p id="currentArtist">Your music universe</p>
+    </div>
+
+    <button id="likeCurrent" title="Like current song" aria-label="Like current song">♡</button>
+  </div>
+
+  <div class="controls">
+    <div class="control-buttons">
+      <button id="shuffle" title="Shuffle" aria-label="Shuffle">🔀</button>
+      <button id="previous" title="Previous" aria-label="Previous song">⏮</button>
+      <button id="playPause" class="play-button" title="Play or pause" aria-label="Play or pause">▶</button>
+      <button id="next" title="Next" aria-label="Next song">⏭</button>
+      <button id="repeat" title="Repeat" aria-label="Repeat">🔁</button>
+    </div>
+
+    <div class="progress">
+      <span id="currentTime">0:00</span>
+      <input id="seek" type="range" min="0" max="100" value="0" aria-label="Song progress">
+      <span id="duration">0:00</span>
+    </div>
+  </div>
+
+  <div class="volume">
+    <span>🔊</span>
+    <input id="volume" type="range" min="0" max="1" step="0.01" value="0.8" aria-label="Volume">
+  </div>
+
+</footer>
+
+<audio id="audio" preload="metadata"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
